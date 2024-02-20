@@ -1,9 +1,10 @@
 package com.school.validation;
 
 import com.school.model.Etudiant;
-import jakarta.validation.*;
 
 
+
+import javax.validation.*;
 import java.util.Set;
 
 public class EtudiantValidation {

@@ -1,12 +1,14 @@
-package com.school.model;
+package com.school.dto;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
@@ -14,20 +16,12 @@ import javax.validation.constraints.Pattern;
 import java.util.Date;
 import java.util.List;
 
-@Entity
 @Data
-@NoArgsConstructor
+@Builder
 @AllArgsConstructor
-public class Etudiant {
+@NoArgsConstructor
+public class EtudiantRequestDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    //@NotBlank
-    @Column(unique = true)
-    //@UniqueValue
-    private String matriculeEtudiant;
 
     @NotBlank
     private String nom;
@@ -115,12 +109,5 @@ public class Etudiant {
 
     // Autorisations pour la Publication
     private boolean consentementPublication;
-
-
-    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
-    private List<Inscription> inscriptions;
-
-
-
 
 }

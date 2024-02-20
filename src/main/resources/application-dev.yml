@@ -1,0 +1,45 @@
+application:
+  title: Student
+  version: 1.0
+front:
+  url: '*'
+location:
+  store: /Users/fabricefoko/Documents/STORE
+server:
+  port: 8080
+spring:
+  batch:
+    job:
+      enabled: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/test?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+  jpa:
+    database: MYSQL
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: true
+    show-sql: false
+  mail:
+    host: smtp.gmail.com
+    password: fbqx zhfg ohwi fplz
+    port: 465
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+      smtp:
+        starttls:
+          enable: true
+    username: fabricenokam@gmail.com
+swagger:
+  host:
+    url: http://localhost:8080

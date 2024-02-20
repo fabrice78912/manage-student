@@ -1,8 +1,9 @@
 package com.school.validation;
 
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
 
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,4 +32,6 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, St
 
         return isUnique;
     }
+
+
 }
