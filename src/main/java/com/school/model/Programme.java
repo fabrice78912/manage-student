@@ -1,12 +1,11 @@
 package com.school.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -19,10 +18,11 @@ public class Programme {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    //@NotBlank
     private String nom;
 
-    @Positive
+
+    // @Positive
     private int duree;
 
     @OneToMany(mappedBy = "programme", cascade = CascadeType.ALL)

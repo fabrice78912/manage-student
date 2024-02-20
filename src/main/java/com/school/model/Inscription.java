@@ -1,18 +1,19 @@
 package com.school.model;
 
 import com.school.enumeration.StatutInscription;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "inscription")
 public class Inscription {
 
     @Id
@@ -21,16 +22,16 @@ public class Inscription {
 
     @ManyToOne
     @JoinColumn(name = "etudiant_id")
-    @NotNull
+    //@NotNull
     private Etudiant etudiant;
 
     @ManyToOne
     @JoinColumn(name = "programme_id")
-    @NotNull
+    //@NotNull
     private Programme programme;
 
     @Enumerated(EnumType.STRING)
-    @NotNull
+    //@NotNull
     private StatutInscription statut;
 
 

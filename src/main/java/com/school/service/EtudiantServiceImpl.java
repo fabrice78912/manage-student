@@ -3,9 +3,9 @@ package com.school.service;
 import com.school.model.Etudiant;
 import com.school.repo.EtudiantRepo;
 import com.school.validation.EtudiantValidation;
-import jakarta.transaction.Transactional;
-import jakarta.validation.ConstraintViolationException;
+
 import lombok.RequiredArgsConstructor;
+import org.example.common.dto.ResponseDto;
 import org.example.common.exception.ValidationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import javax.validation.ConstraintViolationException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -53,9 +55,24 @@ public class EtudiantServiceImpl implements EtudiantService {
         return etudiantRepository.findAll();
     }
 
-    @Override
+/*    @Override
     public Page<Etudiant> getAllEtudiants(Pageable pageable) {
         return etudiantRepository.findAll(pageable);
+    }*/
+
+
+    @Override
+    public ResponseDto getAllEtudiants(Pageable pageable) {
+        Page<Etudiant> etudiants= etudiantRepository.findAll(pageable);
+        return ResponseDto.builder()
+                .code(HttpStatus.OK)
+                .numberOfElements(etudiants.getNumberOfElements())
+                .pageNumber(etudiants.getNumber())
+                .pageSize(etudiants.getSize())
+                .totalElements(etudiants.getTotalElements())
+                .totalPages(etudiants.getTotalPages())
+                .content(etudiants.getContent())
+                .build();
     }
 
     public Optional<Etudiant> getEtudiantById(Long etudiantId) {
